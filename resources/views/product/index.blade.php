@@ -138,9 +138,9 @@
   </div>
 </div>
 			                    @endforeach
+{{ $products->links() }}
 			                    
 			                  </tbody>
-{{ $products->links() }}
                         
 			                </table>
 			            </div>

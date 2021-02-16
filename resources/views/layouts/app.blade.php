@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
     <!-- Styles -->
@@ -86,6 +87,7 @@
                         <li><a href="{{ route('home') }}" class="btn btn-outline-primary">Home</a></li>
                         <li><a href="{{ route('user.index') }}" class="btn btn-outline-primary">User</a></li>
                         <li><a href="{{ route('product.index') }}" class="btn btn-outline-primary">Product</a></li>
+                        <li><a href="{{ route('order.index') }}" class="btn btn-outline-primary">Order</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -148,5 +150,6 @@
         </main>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+@yield('js')
 </body>
 </html>
