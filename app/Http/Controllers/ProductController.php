@@ -8,13 +8,24 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $products = Product::paginate(5);
+        return view('product.index',['products'=> $products]);
     }
 
     /**
@@ -35,7 +46,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        if (Product::create($request->all())) {
+            return redirect()->back()->with('message', 'Product Created Successfully!');
+        }
+         return redirect()->back()->with('message', 'Product Failed !');
     }
 
     /**
@@ -57,7 +72,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
     }
 
     /**
@@ -69,7 +84,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        if ($product->update($request->all())) {
+            return redirect()->back()->with('message', 'Product Updated Successfully!');
+        }
+            return redirect()->back()->with('message', 'Product Not Found!');
     }
 
     /**
@@ -80,6 +98,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if ($product->delete()) {
+            return redirect()->back()->with('message', 'Product Deleted Successfully!');
+        }
+        return redirect()->back()->with('message', 'Product Not Found!');
     }
 }

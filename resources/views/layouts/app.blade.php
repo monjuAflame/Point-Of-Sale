@@ -85,6 +85,7 @@
                         <li><a href="" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-list"></i></a></li>
                         <li><a href="{{ route('home') }}" class="btn btn-outline-primary">Home</a></li>
                         <li><a href="{{ route('user.index') }}" class="btn btn-outline-primary">User</a></li>
+                        <li><a href="{{ route('product.index') }}" class="btn btn-outline-primary">Product</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
