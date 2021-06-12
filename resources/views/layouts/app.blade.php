@@ -82,6 +82,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @auth
+                        
                     <ul class="navbar-nav mr-auto">
                         <li><a href="" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-list"></i></a></li>
                         <li><a href="{{ route('home') }}" class="btn btn-outline-primary">Home</a></li>
@@ -89,6 +91,7 @@
                         <li><a href="{{ route('product.index') }}" class="btn btn-outline-primary">Product</a></li>
                         <li><a href="{{ route('order.index') }}" class="btn btn-outline-primary">Order</a></li>
                     </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
