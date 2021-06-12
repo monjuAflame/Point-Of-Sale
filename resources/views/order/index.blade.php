@@ -14,8 +14,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+          <form action="{{ route('order.store') }}" method="post">
+            @csrf
             <div class="row">
-            	<div class="col-md-9">
+            	<div class="col-md-8">
             		<div class="card">
 		                <div class="card-header">
 		                    {{ __('Orders') }}
@@ -76,21 +78,69 @@
 			            </div>
 			        </div>
             	</div>
-            	<div class="col-md-3">
+            	<div class="col-md-4">
             		<div class="card">
 		                <div class="card-header">
 		                    <p>Total <b class="total">0.00</b></p>
 		                </div>
 
 		                <div class="card-body">
-		                  
-			            </div>
-			            <div class="card-footer">
-			            	<button type="submit" class="btn btn-danger">Save</button>
+		                  <div class="panel">
+                        <div class="row">
+                        <table class="table table-striped">
+                        <tr>
+                          <td>
+                            <label for="customername">Customer Name</label>
+                            
+                            <input type="text" name="customer_name" id="" class="form-control">
+                            
+                          </td>
+                          <td>
+                            <label for="customerphone">Customer Phone</label>
+                            
+                            <input type="number" name="customer_phone" id="" class="form-control">
+                            
+                          </td>
+                        </tr>
+                        
+                      </table>
+                        
+                        <td>Payment Method <br>
+                          
+                            <span class="radio-item">
+                              <input type="radio" name="payment_method" id="cash" class="true" value="cash">
+                              <label for="cash"> <i class="fa fa-money-bill text-success"></i> Cash</label>
+                            </span>
+                            <span class="radio-item">
+                              <input type="radio" name="payment_method" id="bank" class="true" value="bank_transfer">
+                              <label for="bank"><i class="fa fa-university text-success"></i>Bank</label>
+                            </span>
+                            <span class="radio-item">
+                              <input type="radio" name="payment_method" id="card" class="true" value="credit_card">
+                              <label for="card"><i class="fa fa-credit-card text-success"></i>Credit Card</label>
+                            </span>
+                          </td>
+                          <td>
+                            Payment
+                            <input type="number" name="paid_amount" id="paid_amount" class="form-control">
+                          </td>
+                          <td>
+                            Returning Change
+                            <input type="number" name="balance" id="balance" class="form-control">
+                          </td>
+                          <td>
+                            <button class="btn btn-primary btn-lg btn-block mt-3">Save</button>
+                            <button class="btn btn-danger btn-lg btn-block mt-2">Calculator</button>
+                            <a href="#" class="btn-danger mt-3">Log out</a>
+                          </td>
+                        
+                        </div>
+                      </div>
 			            </div>
 			        </div>
             	</div>
             </div>
+          </form>
         </div>
     </div>
     <!-- Modal -->
@@ -176,12 +226,14 @@
 
         $('.addMoreProduct').delegate('.product_id', 'change', function(){
           var tr = $(this).parent().parent();
+          
           var price = tr.find('.product_id option:selected').attr('data-price');
           tr.find('.price').val(price);
           var qty = tr.find('.quantity').val() - 0;
           var dis = tr.find('.discount').val() - 0;
           var price = tr.find('.price').val() - 0;
           var total_amount = (qty * price)-((qty * price * dis)/100);
+          console.log(price);
           tr.find('.total_amount').val(total_amount);
           TotalAmount();
         });
@@ -196,6 +248,12 @@
           tr.find('.total_amount').val(total_amount);
           TotalAmount();
         });
+        $("#paid_amount").keyup(function(){
+          var total = $('.total').html();
+          var paid_amount = $(this).val();
+          var tot = paid_amount - total;
+          $("#balance").val(tot).toFixed(2);
+        })
 
     });
   </script>

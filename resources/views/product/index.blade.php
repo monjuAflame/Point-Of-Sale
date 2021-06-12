@@ -138,7 +138,6 @@
   </div>
 </div>
 			                    @endforeach
-{{ $products->links() }}
 			                    
 			                  </tbody>
                         
